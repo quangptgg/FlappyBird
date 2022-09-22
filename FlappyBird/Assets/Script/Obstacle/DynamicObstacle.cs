@@ -7,12 +7,11 @@ public class DynamicObstacle : MonoBehaviour
     private Vector3 velocity = new Vector3(-1.0f, 0.0f, 0.0f);
     private float stickTime = 1.5f;
     private bool isStuck = false;
-    public GameObject level;
 
-    // Update is called once per frame
     void Update()
     {
-        GameState gameState = level.GetComponent<Level>().gameState;
+        GameState gameState = Level.Instance.gameState;
+        
         if (gameState == GameState.PLAYING)
         {
             stickTime -= Time.deltaTime;
@@ -23,7 +22,6 @@ public class DynamicObstacle : MonoBehaviour
                 transform.Rotate(new Vector3(0.0f, 0.0f, rotationSpeed));
                 isStuck = false;
             }
-
         }
     }
 
